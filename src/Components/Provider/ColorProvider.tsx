@@ -20,6 +20,6 @@ const Provider = styled.div<{ color: string }>`
     ${({ color }) => theme.animations.slideIn(color)};
   }
   .slide-out {
-    ${({ color }) => theme.animations.slideIn(color)};
+    ${({ color }) => theme.animations.slideOut(color)};
   }
 `;

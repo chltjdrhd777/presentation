@@ -4,10 +4,15 @@ export const colors = {
   pointGreen: '#025959',
   pointLeaf: '#A0A603',
   pointBeige: '#F2E0C9',
+  pointYellow: ' #FFD700',
+  pointBrown: '#453024',
+  pointOrange: '#F29863',
 
   //black
   'black-0': '#0b1c1c',
 
   //white
   'white-0': '#f9f3eb',
+
+  //yellow
 };

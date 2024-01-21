@@ -8,9 +8,11 @@ import { AnimatePresence } from 'framer-motion';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import AnimationProvider from 'Components/Provider/ColorProvider';
 import { PathnameType } from 'Constants/navigation';
+import useKeyboardNavigation from 'hook/useKeyboardNavigation';
 
 function App() {
   const location = useLocation();
+  useKeyboardNavigation();
 
   return (
     <AnimationProvider pathname={location.pathname as PathnameType}>

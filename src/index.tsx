@@ -6,6 +6,7 @@ import ThemeProvider from 'Components/Provider/ThemeProvider';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from 'Components/Layout/MainLayout';
+import { AnimatePresence } from 'framer-motion';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,7 +17,7 @@ root.render(
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route element={<MainLayout />}>
+          <Route>
             <Route path="/*" element={<App />} />
           </Route>
         </Routes>

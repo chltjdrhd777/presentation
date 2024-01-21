@@ -16,7 +16,11 @@ export default function Index() {
 
       <nav className="navbar">
         {navData.map(({ name, path }) => (
-          <Link to={path} className={pathname === path ? 'active' : ''}>
+          <Link
+            key={path}
+            to={path}
+            className={pathname === path ? 'active' : ''}
+          >
             {name}
           </Link>
         ))}
@@ -36,7 +40,7 @@ const Header = styled.header<{ pathColor: PathColorType }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${({ theme }) => theme.colors['white-0']};
+  color: ${({ pathColor }) => pathColor.text};
 
   & .logo {
     font-size: 2.5rem;
@@ -59,7 +63,16 @@ const Header = styled.header<{ pathColor: PathColorType }>`
       &.active {
         font-weight: 600;
         font-size: 1.9rem;
-        color: ${({ theme }) => theme.colors.pointGreen};
+      }
+
+      &:hover {
+        color: ${({ pathColor, theme }) =>
+          pathColor.active ?? theme.colors.pointGreen};
+      }
+
+      &.active {
+        color: ${({ pathColor, theme }) =>
+          pathColor.active ?? theme.colors.pointGreen};
       }
     }
   }

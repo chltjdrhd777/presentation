@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import Header from '../Header';
 import { Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
 
-export default function index() {
+export default function index({ children }: PropsWithChildren) {
   return (
     <Main>
       <Header />
-      <Outlet />
+      {/* <Outlet /> */}
+      {children}
     </Main>
   );
 }

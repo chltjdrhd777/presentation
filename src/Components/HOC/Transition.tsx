@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 import { motion } from 'framer-motion';
+import MainLayout from 'Components/Layout/MainLayout';
 
-export default function Transition(Component: FunctionComponent) {
+export default function useTransition(Component: FunctionComponent) {
   return () => (
-    <>
+    <MainLayout>
       <Component />
       <motion.div
         className="slide-in"
@@ -19,6 +20,6 @@ export default function Transition(Component: FunctionComponent) {
         exit={{ scaleY: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       />
-    </>
+    </MainLayout>
   );
 }
