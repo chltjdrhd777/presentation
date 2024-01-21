@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from 'Pages/Home';
+import About from 'Pages/About';
+import Works from 'Pages/Works';
+import Studying from 'Pages/Studying';
+import Closing from 'Pages/Closing';
+import { AnimatePresence } from 'framer-motion';
+
+import { Routes, Route, useLocation } from 'react-router-dom';
+import AnimationProvider, {
+  Pathname,
+} from 'Components/Provider/AnimationProvider';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AnimationProvider pathname={location.pathname as Pathname}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/works" element={<Works />} />
+          <Route path="/studying" element={<Studying />} />
+          <Route path="/closing" element={<Closing />} />
+        </Routes>
+      </AnimatePresence>
+    </AnimationProvider>
   );
 }
 
