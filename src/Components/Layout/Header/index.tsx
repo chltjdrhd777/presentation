@@ -1,33 +1,38 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import { PathnameType, navData } from 'Constants/navigation';
+import { Link, useLocation } from 'react-router-dom';
+import { PathColorType, getPathColor } from 'utils/getPathColor';
 
-export default function index() {
+export default function Index() {
+  const location = useLocation();
+  const pathname = location.pathname as PathnameType;
+  const pathColor = getPathColor(pathname);
+
   return (
-    <Header>
+    <Header pathColor={pathColor}>
       <Link to="/" className="logo">
         Portfolio.
       </Link>
 
       <nav className="navbar">
-        <Link to="/" className="active">
-          Main
-        </Link>
-        <Link to="/about">About</Link>
-        <Link to="/works">Works</Link>
-        <Link to="/studying">Studying</Link>
-        <Link to="/closing">Closing</Link>
+        {navData.map(({ name, path }) => (
+          <Link to={path} className={pathname === path ? 'active' : ''}>
+            {name}
+          </Link>
+        ))}
       </nav>
     </Header>
   );
 }
 
-const Header = styled.header`
+const Header = styled.header<{ pathColor: PathColorType }>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 6rem;
   padding: 2rem 9%;
-  background: var(--second-bg-color);
+  background: ${({ pathColor }) => pathColor.bg};
   display: flex;
   justify-content: space-between;
   align-items: center;

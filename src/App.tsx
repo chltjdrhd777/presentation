@@ -6,16 +6,15 @@ import Closing from 'Pages/Closing';
 import { AnimatePresence } from 'framer-motion';
 
 import { Routes, Route, useLocation } from 'react-router-dom';
-import AnimationProvider, {
-  Pathname,
-} from 'Components/Provider/AnimationProvider';
+import AnimationProvider from 'Components/Provider/ColorProvider';
+import { PathnameType } from 'Constants/navigation';
 
 function App() {
   const location = useLocation();
 
   return (
-    <AnimationProvider pathname={location.pathname as Pathname}>
-      <AnimatePresence mode="wait">
+    <AnimationProvider pathname={location.pathname as PathnameType}>
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
