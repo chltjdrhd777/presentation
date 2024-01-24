@@ -3,7 +3,7 @@ import About from 'Pages/About';
 import Works from 'Pages/Works';
 import Studying from 'Pages/Studying';
 import Closing from 'Pages/Closing';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { Routes, Route, useLocation } from 'react-router-dom';
 import AnimationProvider from 'Components/Provider/ColorProvider';
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <AnimationProvider pathname={location.pathname as PathnameType}>
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="wait" initial={true}>
         <Routes location={location} key={location.pathname}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />

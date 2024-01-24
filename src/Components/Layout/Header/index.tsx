@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 import { PathnameType, navData } from 'Constants/navigation';
+import useGetPathColor from 'hook/useGetPathColor';
 import { Link, useLocation } from 'react-router-dom';
-import { PathColorType, getPathColor } from 'utils/getPathColor';
+import { PathColorType } from 'utils/getPathColor';
 
 export default function Index() {
   const location = useLocation();
   const pathname = location.pathname as PathnameType;
-  const pathColor = getPathColor(pathname);
+  const pathColor = useGetPathColor();
 
   return (
     <Header pathColor={pathColor}>
@@ -41,6 +42,7 @@ const Header = styled.header<{ pathColor: PathColorType }>`
   justify-content: space-between;
   align-items: center;
   color: ${({ pathColor }) => pathColor.text};
+  z-index: 100;
 
   & .logo {
     font-size: 2.5rem;

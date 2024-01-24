@@ -20,6 +20,7 @@ export const getPathColor = (location: PathnameType): PathColorType => {
       return {
         bg: theme.colors.pointEmerald,
         text: theme.colors['white-0'],
+        active: theme.colors.pointGreen,
       };
     case '/works':
       return {

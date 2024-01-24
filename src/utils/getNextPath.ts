@@ -1,9 +1,14 @@
 import { PathnameType, navData } from 'Constants/navigation';
 import { KeyDownType } from 'hook/useKeyboardNavigation';
 
+export type NavigateDirectionType = Extract<
+  KeyDownType,
+  'ArrowLeft' | 'ArrowRight'
+>;
+
 export const getNextPath = (
   currentPath: PathnameType,
-  direction: Extract<KeyDownType, 'ArrowLeft' | 'ArrowRight'>,
+  direction: NavigateDirectionType,
 ) => {
   const currentPathIdx = navData.findIndex((d) => d.path === currentPath);
 

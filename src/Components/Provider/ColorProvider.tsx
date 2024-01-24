@@ -17,9 +17,11 @@ export default function ColorProvider({
 const Provider = styled.div<{ color: string }>`
   /* animations */
   .slide-in {
+    z-index: ${({ theme }) => theme.zIndex['z-0']};
     ${({ color }) => theme.animations.slideIn(color)};
   }
   .slide-out {
+    z-index: 1000;
     ${({ color }) => theme.animations.slideOut(color)};
   }
 `;

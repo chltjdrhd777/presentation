@@ -13,12 +13,6 @@ export default function useKeyboardNavigation() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // if (keyPress.isAnimating) return;
-      // setKeyPress((draft) => {
-      //   draft.isAnimating = true;
-      //   return draft;
-      // });
-
       const key = event.key as KeyDownType;
 
       if (key === 'ArrowLeft' || key === 'ArrowRight') {
