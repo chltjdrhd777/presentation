@@ -12,7 +12,7 @@ export default function useScrollMove() {
           top: y,
           behavior: 'smooth',
         });
-      }, 2200);
+      }, 1800);
     }
   }, []);
 

@@ -17,11 +17,7 @@ export default function Index() {
 
       <nav className="navbar">
         {navData.map(({ name, path }) => (
-          <Link
-            key={path}
-            to={path}
-            className={pathname === path ? 'active' : ''}
-          >
+          <Link key={path} to={path} className={pathname === path ? 'active' : ''}>
             {name}
           </Link>
         ))}
@@ -68,13 +64,11 @@ const Header = styled.header<{ pathColor: PathColorType }>`
       }
 
       &:hover {
-        color: ${({ pathColor, theme }) =>
-          pathColor.active ?? theme.colors.pointGreen};
+        color: ${({ pathColor, theme }) => pathColor.active ?? theme.colors.pointGreen};
       }
 
       &.active {
-        color: ${({ pathColor, theme }) =>
-          pathColor.active ?? theme.colors.pointGreen};
+        color: ${({ pathColor, theme }) => pathColor.active ?? theme.colors.pointGreen};
       }
     }
   }
