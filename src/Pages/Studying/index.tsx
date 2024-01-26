@@ -12,9 +12,13 @@ import blog1 from '../../image/blog1.png';
 import blog2 from '../../image/blog2.png';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import useScrollMove from 'hook/useScrollMove';
+import useResetScroll from 'hook/useResetScroll';
 
 function Studying() {
   const pathColor = useGetPathColor();
+  const { ref } = useScrollMove();
+  useResetScroll();
 
   const intersectionRef = useRef<null | HTMLDivElement>(null);
   const [threeProject, setThreeProject] = useState(new Map<number, boolean>());
@@ -33,8 +37,6 @@ function Studying() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     if (intersectionRef.current) {
       observer.observe(intersectionRef.current);
     }
@@ -50,23 +52,17 @@ function Studying() {
         </motion.h1>
       </div>
 
-      <div className="box sec-2">
+      <div className="box sec-2" ref={ref}>
         <motion.div
           className="blogging"
           initial="hidden"
           whileInView={'visible'}
           viewport={{ once: true, amount: 0.25 }}
         >
-          <motion.div
-            className="blogimg"
-            variants={fadeInCustom('up', 'spring', 0.5, 1.5)}
-          >
+          <motion.div className="blogimg" variants={fadeInCustom('up', 'spring', 0.5, 1.5)}>
             <img src={blog1} alt="" />
           </motion.div>
-          <motion.div
-            className="blogimg"
-            variants={fadeInCustom('up', 'spring', 1, 1.5)}
-          >
+          <motion.div className="blogimg" variants={fadeInCustom('up', 'spring', 1, 1.5)}>
             <img src={blog2} alt="" />
           </motion.div>
         </motion.div>

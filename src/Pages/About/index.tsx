@@ -18,12 +18,13 @@ import money from '../../image/money.png';
 import Card from './Card';
 import ModalPortal from 'Components/Modal/ModalPortal';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ItelsContent from './ItelsContent';
 import UdemyContent from './UdemyContent';
 import CodeStatesContent from './CodeStatesContent';
 import WantedContent from './WantedContent';
 import useResetScroll from 'hook/useResetScroll';
+import useScrollMove from 'hook/useScrollMove';
 
 function About() {
   const pathColor = useGetPathColor();
@@ -38,9 +39,7 @@ function About() {
     codestates: CodeStatesContent,
     wanted: WantedContent,
   };
-  const [selectedContent, setSelectedContent] = useState<
-    null | keyof typeof modalContent
-  >(null);
+  const [selectedContent, setSelectedContent] = useState<null | keyof typeof modalContent>(null);
   const onCloseModal = () => {
     setSelectedContent(null);
     setIsModalOpen(false);
@@ -53,6 +52,8 @@ function About() {
     { text: 'Wanted Internship', imgSrc: wantedImg, comp: 'wanted' },
   ];
 
+  const { ref } = useScrollMove();
+
   return (
     <Section className="section" pathColor={pathColor}>
       <div className="scroll-watcher"></div>
@@ -63,7 +64,7 @@ function About() {
         </motion.h1>
       </div>
 
-      <div className="box sec-2">
+      <div className="box sec-2" ref={ref}>
         <Therapy>
           <TherapyImage>
             <motion.div
@@ -155,9 +156,7 @@ function About() {
       </div>
 
       {isModalOpen && (
-        <ModalPortal onClose={onCloseModal}>
-          {selectedContent ? modalContent[selectedContent]() : <></>}
-        </ModalPortal>
+        <ModalPortal onClose={onCloseModal}>{selectedContent ? modalContent[selectedContent]() : <></>}</ModalPortal>
       )}
     </Section>
   );

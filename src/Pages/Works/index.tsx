@@ -8,9 +8,11 @@ import { motion } from 'framer-motion';
 
 import Experience from './Experience';
 import useResetScroll from 'hook/useResetScroll';
+import useScrollMove from 'hook/useScrollMove';
 
 function Works() {
   useResetScroll();
+  const { ref } = useScrollMove();
 
   const pathColor = useGetPathColor();
 
@@ -24,7 +26,7 @@ function Works() {
         </motion.h1>
       </div>
 
-      <div className="box sec-2">
+      <div className="box sec-2" ref={ref}>
         <Experience />
       </div>
     </Section>
